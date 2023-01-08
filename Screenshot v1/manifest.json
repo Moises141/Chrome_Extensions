@@ -1,0 +1,22 @@
+{
+  "manifest_version": 2,
+  "name": "Screenshot Extension",
+  "short_name": "shot",
+  "description": "A screenshot extension that allows you to capture images of web pages.",
+  "version": "1.0",
+  "permissions": [
+    "activeTab",
+    "downloads"
+  ],
+  "icons": {
+    "128": "icon.png"
+  },
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "browser_action": {
+    "default_popup": "popup.html"
+  }
+}
+
+

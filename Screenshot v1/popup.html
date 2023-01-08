@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Screenshot Extension</title>
+  <link rel="stylesheet" type="text/css" href="popup.css">
+</head>
+<body style="width: 353px; height: 226px;background: linear-gradient(45deg, #ffffff, #512e5c);">
+  <h1>Screenshot Extension</h1>
+  <form>
+    <label style="font-size: 15px;">
+      Name:
+      <input type="text" id="screenshot-name">
+      <button type="submit">Submit</button>
+    </label>
+  </form>
+  <div id="screenshot-preview">
+    <!-- Preview tiles will be added here -->
+    <div>
+      <img src="screenshot.jpg"class="default-image">
+      <button id="delete-button">Delete Image</button>
+      <p>By Moises Beleche</p>
+      <p class="download-path"></p>
+    </div>
+  </div>
+</body>
+<script src="popup.js"></script>
+</html>
