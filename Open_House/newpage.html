@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New Tab</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="searchContainer">
+        <input type="text" id="searchInput" placeholder="powered by google">
+        <button id="searchButton">Search</button>
+    </div>
+    <div id="topSites" style="position:fixed;top:10px;left:10px;z-index:2">
+        <ul id="topSitesList" style="list-style:none;padding:0;margin:0;display:flex">
+            <li>
+                <img src="https://www.google.com/s2/favicons?domain=https://www.google.com&amp;format=png&amp;sz=128" class="favicon" alt="Google" data-url="https://www.google.com">
+                <a href="https://www.google.com" target="_blank">Google</a>
+            </li>
+            <li>
+                <img src="https://www.google.com/s2/favicons?domain=https://www.youtube.com&amp;format=png&amp;sz=128" class="favicon" alt="YouTube" data-url="https://www.youtube.com">
+                <a href="https://www.youtube.com" target="_blank">YouTube</a>
+            </li>
+            <li>
+                <img src="https://www.google.com/s2/favicons?domain=https://www.chatgpt.com&amp;format=png&amp;sz=128" class="favicon" alt="ChatGPT" data-url="https://www.chatgpt.com">
+                <a href="https://www.chatgpt.com" target="_blank">ChatGPT</a>
+            </li>
+        </ul>
+        <button id="addSiteBtn">Add Site</button>
+        <button id="removeLastSiteBtn">Remove Last Site</button>
+    </div>
+    <img id="backgroundImage" src="Backgrounds/1.png" alt="Default background image" style="width:100%;height:100%;position:fixed;top:0;left:0;z-index:1;object-fit:cover">
+    <div style="position:fixed;bottom:10px;left:10px;z-index:2">
+        <button id="customizeBtn">Customize</button>
+        <div id="settingsMenu" style="display:none">
+            <a href="#" id="changeBackground">Change Background</a>
+            <a href="#" id="importSoundTab">Import sound tab</a>
+            <div class="custom-sound-input">
+                <label for="customSoundOpenInput">Custom Open Sound:</label>
+                <input type="file" id="customSoundOpenInput" accept="audio/*">
+            </div>
+            <div class="custom-sound-input">
+                <label for="customSoundCloseInput">Custom Close Sound:</label>
+                <input type="file" id="customSoundCloseInput" accept="audio/*">
+            </div>
+            <div class="option">
+                <a href="#">Tab noises</a>
+                <input type="checkbox" id="soundToggle" checked>
+            </div>
+        </div>
+    </div>
+    <div id="clock" class="clockStyle"></div>
+    <input type="file" id="backgroundInput" style="display:none" accept="image/*">
+    <script src="script.js"></script>
+</body>
+</html>
