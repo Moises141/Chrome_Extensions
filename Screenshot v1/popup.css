@@ -1,8 +1,243 @@
-#screenshot-preview img {
-    width: 201px;
-    height: 124px;
+/* Improved popup.css */
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+      Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  line-height: 1.6;
+  padding: 16px;
+  min-width: 320px;
+  background-color: #000000;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #161515;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Typography */
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: hsl(249, 83%, 61%);
+}
+
+h2 {
+  font-size: 18px;
+  margin-bottom: 16px;
+  color: hsl(249, 83%, 61%);
+}
+
+/* Form styles */
+.form-group {
+  margin-bottom: 16px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: border-color 0.2s ease;
+}
+
+input[type="text"]:focus {
+  border-color: #4a90e2;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.1);
+}
+
+input[type="text"]:invalid {
+  border-color: #dc3545;
+}
+
+/* Button styles */
+.btn-primary {
+  background-color: #000000;
+  color: hsl(249, 83%, 61%);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: #357abd;
+}
+
+.btn-primary:active {
+  background-color: #2d6da3;
+}
+
+.btn-delete {
+  background-color: #050505;
+  color: hsl(249, 83%, 61%);
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background-color 0.2s ease;
+}
+
+.btn-delete:hover {
+  background-color: #000000;
+}
+
+/* Preview styles */
+.preview-container {
+  margin-top: 24px;
+}
+/* Updated preview-related styles in popup.css */
+.preview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+  max-width: 100%; /* Ensure grid doesn't overflow */
+}
+
+.preview-item {
+  background-color: #fff;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  width: 100%; /* Ensure item takes full width of grid cell */
+}
+
+.preview-item img {
+  width: 100%;
+  height: 124px;
+  object-fit: cover; /* This maintains aspect ratio */
+  display: block;
+  max-width: 100%; /* Ensure image doesn't overflow */
+}
+
+/* Add this for the screenshot container */
+.screenshot-container {
+  position: relative;
+  width: 100%;
+  padding-top: 62%; /* 16:10 aspect ratio */
+  overflow: hidden;
+}
+
+.screenshot-container img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Add styles for download path and controls */
+.preview-controls {
+  padding: 8px;
+  background: #161616;
+  border-top: 1px solid #000000;
+}
+
+.preview-actions {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.preview-info {
+  font-size: 12px;
+  color: #666;
+}
+
+/* Loading states */
+.loading .btn-text {
+  display: none;
+}
+
+.loading-spinner {
+  display: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: spin 0.8s linear infinite;
+}
+
+.loading .loading-spinner {
+  display: block;
+}
+
+@keyframes spin {
+  to {
+      transform: rotate(360deg);
   }
-#screenshot-preview div {
-    padding: 4px;
+}
+
+/* Error message styles */
+.error-message {
+  background-color: #000000;
+  color: hsl(249, 83%, 61%);
+  padding: 12px;
+  border-radius: 4px;
+  margin: 16px 0;
+  font-size: 14px;
+  border: 1px solid #ffcccc;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: translateY(-10px);
   }
-    
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  body {
+      padding: 12px;
+  }
+
+  .container {
+      padding: 16px;
+  }
+
+  .preview-grid {
+      grid-template-columns: 1fr;
+  }
+
+  h1 {
+      font-size: 20px;
+  }
+}
+p.download-path{
+  color: #fff;
+}
