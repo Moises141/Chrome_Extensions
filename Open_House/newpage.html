@@ -2,12 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>New Tab</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="searchContainer">
-        <input type="text" id="searchInput" placeholder="powered by google">
+        <!-- Search Input and Button -->
+        <input type="text" id="searchInput" placeholder="Search here...">
         <button id="searchButton">Search</button>
     </div>
     <div id="topSites" style="position:fixed;top:10px;left:10px;z-index:2">
@@ -32,8 +34,16 @@
     <div style="position:fixed;bottom:10px;left:10px;z-index:2">
         <button id="customizeBtn">Customize</button>
         <div id="settingsMenu" style="display:none">
+            <!-- Moved the dropdown menu here -->
+            <label for="searchEngineSelector">Select Search Engine:</label>
+            <select id="searchEngineSelector">
+                <option value="google">Google</option>
+                <option value="bing">Bing</option>
+                <option value="duckduckgo">DuckDuckGo</option>
+                <option value="brave">Brave</option>
+            </select>
             <a href="#" id="changeBackground">Change Background</a>
-            <a href="#" id="importSoundTab">Import sound tab</a>
+            <label href="#" id="importSoundTab">Import sound tab</label>
             <div class="custom-sound-input">
                 <label for="customSoundOpenInput">Custom Open Sound:</label>
                 <input type="file" id="customSoundOpenInput" accept="audio/*">
@@ -43,7 +53,7 @@
                 <input type="file" id="customSoundCloseInput" accept="audio/*">
             </div>
             <div class="option">
-                <a href="#">Tab noises</a>
+                <label href="#">Tab noises</label>
                 <input type="checkbox" id="soundToggle" checked>
             </div>
         </div>
