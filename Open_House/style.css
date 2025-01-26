@@ -164,3 +164,28 @@ input[type="checkbox" i] {
   border: none;
   cursor: pointer;
 }
+
+/* Styling for the search engine selector */
+#searchEngineSelector {
+  width: 100%; /* Makes the dropdown take up the full width of the container */
+  padding: 8px;
+  background-color: #444; /* Dark background */
+  color: white; /* White text */
+  border: 1px solid #555; /* Slightly lighter border */
+  border-radius: 5px; /* Rounded corners */
+  font-size: 14px; /* Adjust as needed */
+  margin-bottom: 10px; /* Space between the dropdown and other elements */
+  cursor: pointer; /* Makes the pointer cursor appear when hovering */
+}
+
+/* Styling for the dropdown options */
+#searchEngineSelector option {
+  background-color: #35334b; /* Dark background for options */
+  color: white; /* White text for the options */
+  padding: 8px;
+  font-size: 14px; /* Adjust as needed */
+}
+
+#searchEngineSelector option:hover {
+  background-color: #4b4b63; /* Slightly lighter background on hover */
+}
