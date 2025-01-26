@@ -13,6 +13,7 @@ const searchButton = document.getElementById("searchButton");
 const soundToggle = document.getElementById("soundToggle");
 const customSoundOpenInput = document.getElementById("customSoundOpenInput");
 const customSoundCloseInput = document.getElementById("customSoundCloseInput");
+const searchEngineSelector = document.getElementById("searchEngineSelector");
 
 // Event listener for changeBackgroundButton
 if (changeBackgroundButton) {
@@ -68,7 +69,9 @@ function initBackground() {
 }
 
 // Event listener for background input change
-backgroundInput.addEventListener('change', setBackground);
+if (backgroundInput) {
+  backgroundInput.addEventListener('change', setBackground);
+}
 
 // Initialize background when the window loads
 window.addEventListener('load', () => {
@@ -154,9 +157,9 @@ function removeLastSite() {
 }
 
 // Event listeners for buttons
-addSiteBtn.addEventListener("click", addSite);
-removeLastSiteBtn.addEventListener("click", removeLastSite);
-customizeBtn.addEventListener("click", customize);
+if (addSiteBtn) addSiteBtn.addEventListener("click", addSite);
+if (removeLastSiteBtn) removeLastSiteBtn.addEventListener("click", removeLastSite);
+if (customizeBtn) customizeBtn.addEventListener("click", customize);
 
 window.addEventListener('load', loadTopSites);
 
@@ -166,22 +169,44 @@ window.addEventListener('storage', function(e) {
   }
 });
 
-// Google Search Functionality
-function searchGoogle() {
+// Search Functionality with Multiple Search Engines
+function search() {
   const searchTerm = searchInput.value.trim();
   if (searchTerm !== "") {
-    const googleSearchUrl = "https://www.google.com/search?q=" + encodeURIComponent(searchTerm);
-    window.location.href = googleSearchUrl;
+    const selectedEngine = searchEngineSelector.value || "google";
+    let searchUrl;
+
+    switch (selectedEngine) {
+      case "google":
+        searchUrl = `https://www.google.com/search?q=${encodeURIComponent(searchTerm)}`;
+        break;
+      case "bing":
+        searchUrl = `https://www.bing.com/search?q=${encodeURIComponent(searchTerm)}`;
+        break;
+      case "duckduckgo":
+        searchUrl = `https://duckduckgo.com/?q=${encodeURIComponent(searchTerm)}`;
+        break;
+      case "brave":
+        searchUrl = `https://search.brave.com/search?q=${encodeURIComponent(searchTerm)}`;
+        break;
+      default:
+        searchUrl = `https://www.google.com/search?q=${encodeURIComponent(searchTerm)}`;
+    }
+
+    window.location.href = searchUrl;
   }
 }
 
-searchButton.addEventListener("click", searchGoogle);
 
-searchInput.addEventListener("keydown", function(event) {
-  if (event.key === "Enter") {
-    searchGoogle();
-  }
-});
+if (searchButton) searchButton.addEventListener("click", search);
+
+if (searchInput) {
+  searchInput.addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+      search();
+    }
+  });
+}
 
 // Variables to store default sound paths
 const defaultOpenSoundPath = "sounds/open_tab_sound.mp3";
@@ -221,6 +246,7 @@ function updateSoundState() {
     document.removeEventListener("visibilitychange", handleVisibilityChange);
   }
 }
+
 // Function to handle visibility change
 function handleVisibilityChange() {
   if (document.visibilityState === "hidden") {
